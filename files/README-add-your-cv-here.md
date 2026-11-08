@@ -1,1 +1,0 @@
-Drop your CV PDF in this folder (e.g. `Alyssa_Taylor_CV.pdf`), then link to it from `_pages/cv.md` — there's a commented-out example line near the top of that file showing the exact syntax. Files you put in `files/` are served at `https://<your-site>/files/<filename>`.
