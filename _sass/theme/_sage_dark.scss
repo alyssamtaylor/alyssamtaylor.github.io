@@ -1,0 +1,69 @@
+/* ==========================================================================
+    FOREST THEME - DARK VERSION
+    (custom skin, not part of the original academicpages template)
+
+    The colors you picked step by step:
+      Page background ........ Shadowed ivy    #18231d
+      Top bar ................ Pine shadow     #304529 (same as light mode)
+      Headings + your name ... Moss            #a3b18a
+      Links .................. Moss            #a3b18a (for all three link options)
+      Body text .............. warm cream      #e6e2d3
+
+    This file only sets colors. The green top bar and green headings are
+    switched on in _sage_light.scss and pick up the --forest-* values below.
+    ========================================================================== */
+
+/* Color codes used for the theme */
+$primary-color              : #4a6741; // a lighter forest green, so white button text stays readable
+$gray                       : #b9b6a6; // soft warm gray for secondary text
+$dark-gray                  : mix(#000, $gray, 40%);
+$darker-gray                : mix(#000, $gray, 60%);
+$light-gray                 : mix(#fff, $gray, 50%);
+
+$background                 : #18231d;  // Shadowed ivy
+$text                       : #e6e2d3;  // warm cream
+$link                       : #a3b18a;  // Moss
+
+/* Color codes used for the site */
+$danger-color               : #ee5f5b;
+$info-color                 : #a3b18a;
+$notice-color               : #b9b6a6;
+$success-color              : #62c462;
+$warning-color              : #c97a6a;
+
+/* Other basic settings for the template (unchanged) */
+$border-radius              : 6px;
+$box-shadow                 : 0 1px 1px rgba(0, 0, 0, 0.35);
+$global-transition          : all 0.2s ease-in-out;
+$masthead-height            : 70px;
+$navicon-width              : 28px;
+$navicon-height             : 4px;
+$sidebar-link-max-width     : 250px;
+$sidebar-screen-min-width   : 1024px;
+
+/* Forest, dark mode (applies when the reader switches to dark mode) */
+html[data-theme="dark"] {
+    color-scheme: dark;
+    --global-base-color                 : #4a6741;  // buttons, highlighted page number
+    --global-bg-color                   : #{$background};
+    --global-footer-bg-color            : #121a15;  // a step darker than the page, for the footer strip
+    --global-border-color               : #34413a;  // thin lines and dividers
+    --global-dark-border-color          : #2a362f;
+    --global-code-background-color      : #202d25;
+    --global-code-text-color            : #{$text};
+    --global-fig-caption-color          : #b9b6a6;
+    --global-link-color                 : #{$link};
+    --global-link-color-hover           : #{mix(#fff, $link, 25%)};  // a little lighter on hover
+    --global-link-color-visited         : #{$link};                  // visited links stay the same color
+    --global-masthead-link-color        : #efe9d8;  // cream text on the green top bar
+    --global-masthead-link-color-hover  : #d6dfc4;
+    --global-text-color                 : #{$text};
+    --global-text-color-light           : #b9b6a6;  // secondary text: dates, locations, footer
+    --global-thead-color                : #202d25;
+
+    /* Forest extras (the rules live at the bottom of _sage_light.scss) */
+    --forest-bar-bg                     : #304529;  // top bar background (Pine shadow, same as light mode)
+    --forest-bar-text                   : #efe9d8;  // top bar text (cream)
+    --forest-bar-underline              : #a3b18a;  // hover line under menu items (Moss)
+    --forest-heading                    : #a3b18a;  // headings and your name (Moss)
+}

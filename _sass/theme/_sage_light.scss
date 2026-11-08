@@ -1,0 +1,311 @@
+/* ==========================================================================
+    FOREST THEME - LIGHT VERSION
+    (custom skin, not part of the original academicpages template)
+
+    The colors you picked step by step:
+      Page background ........ Pale moss       #e9ede1
+      Top bar + headings ..... Pine shadow     #304529
+      Body text .............. Darkest forest  #22311d
+      Links .................. your choice of three (see LINK SWITCH below)
+
+    This file also adds two things the theme doesn't do on its own:
+    a solid green top bar, and green headings (see FOREST EXTRAS at the
+    bottom). The dark version (_sage_dark.scss) only changes the colors;
+    the extras here apply to both modes.
+
+    The file is still called _sage_light.scss so your _config.yml
+    (site_theme: "sage") keeps working without changes.
+    ========================================================================== */
+
+/* Google Fonts: Fraunces for headings, Nunito Sans for body text */
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..700&family=Nunito+Sans:ital,wght@0,400;0,600;0,700;1,400;1,700&display=swap');
+
+/* Typefaces (unchanged) */
+$serif                      : "Fraunces", Georgia, "Iowan Old Style", serif;
+$sans-serif                 : "Nunito Sans", "Helvetica Neue", Arial, sans-serif;
+$sans-serif-narrow          : $sans-serif;
+$global-font-family         : $sans-serif;
+$header-font-family         : $serif;
+$caption-font-family        : $serif;
+
+
+/* --------------------------------------------------------------------------
+   LINK SWITCH
+   Change the word in quotes on the $link-choice line to switch link colors.
+   Options:  "deep-forest"   #3f5a36  (one step lighter than the headings)
+             "forest"        #4a6741  (two steps lighter, stands out more)
+             "black-cherry"  #2a1016  (almost black, looks like text + underline)
+   Dark mode always uses Moss for links, whichever you pick here.
+   -------------------------------------------------------------------------- */
+$link-choice                : "deep-forest";
+
+$link-options               : (
+    "deep-forest"  : #3f5a36,
+    "forest"       : #4a6741,
+    "black-cherry" : #2a1016,
+);
+$link                       : map-get($link-options, $link-choice);
+
+
+/* Color codes used for the theme */
+$primary-color              : #304529; // Pine shadow
+$gray                       : #4b5545; // soft green-gray for secondary text
+$dark-gray                  : mix(#000, $gray, 40%);
+$darker-gray                : mix(#000, $gray, 60%);
+$light-gray                 : mix(#fff, $gray, 50%);
+$lighter-gray               : mix(#fff, $gray, 90%);
+
+/* Color codes used for the site */
+$danger-color               : #ee5f5b;
+$info-color                 : #304529;
+$notice-color               : #4b5545;
+$success-color              : #62c462;
+$warning-color              : #8a4b24;
+
+/* Other basic settings for the template (unchanged) */
+$border-radius              : 6px;
+$box-shadow                 : 0 1px 1px rgba(34, 49, 29, 0.12);
+$global-transition          : all 0.2s ease-in-out;
+$masthead-height            : 70px;
+$navicon-width              : 28px;
+$navicon-height             : 4px;
+$sidebar-link-max-width     : 250px;
+$sidebar-screen-min-width   : 1024px;
+
+
+/* Forest, light mode */
+:root {
+    color-scheme: light;
+    --global-base-color                 : #304529;  // Pine shadow: buttons, highlighted page number
+    --global-bg-color                   : #e9ede1;  // Pale moss: the page background
+    --global-footer-bg-color            : #dfe4d5;  // a step darker than the page, for the footer strip
+    --global-border-color               : #d0d7c4;  // thin lines and dividers
+    --global-dark-border-color          : #b9c2ab;
+    --global-code-background-color      : #f1f3eb;
+    --global-code-text-color            : #22311d;
+    --global-fig-caption-color          : #4b5545;
+    --global-link-color                 : #{$link};                   // set by the LINK SWITCH above
+    --global-link-color-hover           : #{mix(#000, $link, 20%)};   // a little darker on hover
+    --global-link-color-visited         : #{$link};                   // visited links stay the same color
+    --global-masthead-link-color        : #efe9d8;  // cream text on the green top bar
+    --global-masthead-link-color-hover  : #d6dfc4;  // pale moss when you hover a menu item
+    --global-text-color                 : #22311d;  // Darkest forest: body text
+    --global-text-color-light           : #4b5545;  // secondary text: dates, locations, footer
+    --global-thead-color                : #dfe4d5;
+
+    /* Forest extras (used by the rules at the bottom of this file) */
+    --forest-bar-bg                     : #304529;  // top bar background (Pine shadow)
+    --forest-bar-text                   : #efe9d8;  // top bar text (cream)
+    --forest-bar-underline              : #a3b18a;  // line that slides in under a menu item on hover (Moss)
+    --forest-heading                    : #304529;  // headings and your name (Pine shadow)
+
+    /* Layout (used by the LAYOUT rules at the very bottom; same in both modes).
+       These only apply on screens 925px and wider. Phones and narrow windows
+       keep the theme's normal stacked layout. */
+    --layout-gap                        : 72px;     // space between the sidebar and the page text ("Medium"; Snug was 48px, Roomy 104px)
+    --layout-sidebar-width              : 200px;    // width of the sidebar column (photo, name, links)
+    --layout-max-width                  : 1400px;   // total width of sidebar + text; the page is centered inside the window
+    --layout-edge                       : 32px;     // minimum space between the page and the window edges
+}
+
+
+/* ==========================================================================
+   FOREST EXTRAS: green top bar + green headings
+   These rules start with "html" so they win over the theme's own rules
+   regardless of file order. Their colors come from the --forest-* values
+   above (light) and in _sage_dark.scss (dark), so you never edit them here.
+   To turn the green top bar off, delete everything from "TOP BAR" down to
+   "HEADINGS".
+   ========================================================================== */
+
+/* TOP BAR */
+html .masthead,
+html .greedy-nav,
+html .greedy-nav button,
+html .masthead__menu-item {
+    background-color: var(--forest-bar-bg);
+}
+
+html .masthead::after {
+    background: var(--forest-bar-bg);   // hides the thin line under the bar
+}
+
+html .greedy-nav .visible-links a::before {
+    background: var(--forest-bar-underline);
+}
+
+html .masthead__menu-item.selected a,
+html .masthead__menu-item.selected a:hover {
+    color: var(--forest-bar-text);
+    border-bottom-color: var(--forest-bar-text);
+}
+
+/* On small screens, extra menu items fold into a dropdown with a light
+   background, so those links go back to normal text colors. */
+html .greedy-nav .hidden-links .masthead__menu-item {
+    background-color: var(--global-bg-color);
+}
+
+html .greedy-nav .hidden-links a {
+    color: var(--global-text-color);
+}
+
+html .greedy-nav .hidden-links a:hover {
+    color: var(--forest-heading);
+}
+
+/* HEADINGS (page titles, section headings, and your name in the sidebar) */
+html h1,
+html h2,
+html h3,
+html h4,
+html h5,
+html h6 {
+    color: var(--forest-heading);
+}
+
+
+/* ==========================================================================
+   LAYOUT: steady gap between the sidebar and the page
+   The theme sizes the sidebar by the window width but the text column by the
+   page width, so the gap between them shrank to almost nothing in
+   laptop-sized windows and the page drifted left on big screens. These rules
+   give the sidebar a fixed width, keep a fixed gap, and center the whole
+   page (top bar and footer included, so they line up with the sidebar).
+   It covers both page types the theme uses: regular pages (About) and list
+   pages (Publications, Teaching, CV).
+   Change the sizes with the --layout-* values in the :root block above.
+   To go back to the theme's own layout, delete this whole LAYOUT block.
+   ========================================================================== */
+
+@media (min-width: 925px) {
+    html #main,
+    html .masthead__inner-wrap,
+    html .page__footer footer {
+        max-width: var(--layout-max-width);
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: var(--layout-edge);
+        padding-right: var(--layout-edge);
+    }
+
+    html .sidebar {
+        width: var(--layout-sidebar-width);
+        max-width: none;
+        padding-right: 0;
+    }
+
+    html .page,
+    html .archive {
+        float: right;
+        width: calc(100% - var(--layout-sidebar-width) - var(--layout-gap));
+        margin-right: 0;
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+
+/* ==========================================================================
+   PUBLICATIONS LIST: short entries
+   Styles the compact list on the Publications page (title, "with ..."
+   co-authors, journal and year). Each title links to the paper's own page,
+   which still has the summary, full citation and download link.
+   To change what each entry shows, edit _includes/archive-single-compact.html.
+   ========================================================================== */
+
+html .pub-compact .archive__item {
+    margin-bottom: 1.1em;
+}
+
+html .pub-compact .archive__item-title {
+    font-family: inherit;               // same font as the body text, not the heading font
+    font-size: 1.05em;
+    line-height: 1.35;
+    margin: 0 0 0.2em;
+}
+
+html .pub-compact .archive__item-title a {
+    text-decoration: none;              // titles are clearly links already; underline only on hover
+}
+
+html .pub-compact .archive__item-title a:hover {
+    text-decoration: underline;
+}
+
+html .pub-compact p {
+    margin: 0;
+    font-size: 0.85em;
+    color: var(--global-text-color-light);
+}
+
+/* ==========================================================================
+   SIDEBAR DETAILS
+   ========================================================================== */
+
+/* Profile photo: crop to a square so it shows as a circle, whatever the photo's shape.
+   The second number in object-position picks which part stays in view:
+   0% = top of the photo, 50% = middle. Lower it if your head gets cut off. */
+html .author__avatar img {
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    object-position: 50% 30%;
+}
+
+/* Location, institute and links: wrap long lines instead of cutting them off,
+   with the second line lined up under the text, not under the icon. */
+@media (min-width: 1024px) {
+    html .author__urls li.author__desktop,
+    html .author__urls li a {
+        display: flex;
+        align-items: baseline;
+        white-space: normal;
+    }
+    html .author__urls li i {
+        flex-shrink: 0;
+    }
+}
+
+/* ==========================================================================
+   TEXT SIZE
+   Everything (body text, headings, menu, sidebar) is sized relative to the
+   two "overall" numbers, so changing them scales the whole site evenly.
+   The template's own sizes are 16px (phones) and 18px (computers).
+   ========================================================================== */
+
+:root {
+    --text-size-phone        : 13px;    // overall size on screens narrower than 768px
+    --text-size-desktop      : 15px;    // overall size on tablets and computers
+    --sidebar-text-size      : 0.75em;  // sidebar bio, location and links, relative to the overall size
+}
+
+html:root {
+    font-size: var(--text-size-phone);
+}
+
+@media (min-width: 768px) {
+    html:root {
+        font-size: var(--text-size-desktop);
+    }
+}
+
+html .sidebar p,
+html .sidebar li {
+    font-size: var(--sidebar-text-size);
+}
+
+/* ==========================================================================
+   FOOTER: sit at the end of the page instead of being pinned to the bottom
+   of the window. (The template only does this on phones.)
+   Delete this block to go back to the pinned footer.
+   ========================================================================== */
+
+@media (min-width: 769px) {
+    html .page__footer {
+        position: relative;
+        bottom: auto;
+    }
+    html body {
+        margin-bottom: 0 !important;  // the template adds space for the pinned footer; not needed anymore
+    }
+}

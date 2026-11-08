@@ -1,0 +1,26 @@
+{% comment %}
+  Compact publication entry: title (links to the paper's own page),
+  an optional "with ..." co-author line, and journal + year.
+  Used by _pages/publications.html. The original, longer entry
+  (_includes/archive-single.html) is untouched and still used elsewhere.
+{% endcomment %}
+{% include base_path %}
+{% assign title = post.title | markdownify | remove: "<p>" | remove: "</p>" | strip %}
+{% assign journal = post.venue | split: "," | first | strip %}
+<div class="list__item pub-compact">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    <h2 class="archive__item-title" itemprop="headline">
+      <a href="{{ base_path }}{{ post.url }}" rel="permalink">{{ title }}</a>
+    </h2>
+    {% if post.coauthors %}
+      <p class="pub-compact__authors">with {{ post.coauthors }}</p>
+    {% endif %}
+    {% if post.category == "workingpapers" or post.category == "inprogress" %}
+      {% unless journal == "" or journal == "Working paper" or journal == "Work in progress" %}
+        <p class="pub-compact__meta">{{ journal }}</p>
+      {% endunless %}
+    {% else %}
+      <p class="pub-compact__meta">{% if journal != "" %}<i>{{ journal }}</i> &middot; {% endif %}{{ post.date | date: "%Y" }}</p>
+    {% endif %}
+  </article>
+</div>
