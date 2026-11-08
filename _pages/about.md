@@ -27,3 +27,5 @@ Outside of work
 Skiing, hiking, fitness, yoga, arts and crafts, furniture upcycling, baking, wine, and reading (classics, fantasy, sci-fi, autobiographies, nonfiction). I'm also slowly writing a fantasy novel of my own.
 
 This is my dog, Neville. He's 10 years old and an absolute curmudgeon &mdash; he enjoys playing with balls and playing surgeon (disassembling toy squeakers).
+
+ <img src="/images/neville.jpg" alt="My dog Neville" style="width: 320px; max-width: 100%; border-radius: 6px;">
