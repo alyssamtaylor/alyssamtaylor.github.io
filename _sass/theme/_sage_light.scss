@@ -309,3 +309,58 @@ html .sidebar li {
         margin-bottom: 0 !important;  // the template adds space for the pinned footer; not needed anymore
     }
 }
+
+/* ==========================================================================
+   FOOTER POSITION: below whichever is longer, the sidebar or the page text,
+   and never higher than the bottom of the window on short pages.
+   To undo, delete this whole block.
+   ========================================================================== */
+
+/* Short pages: stretch the page area so the footer reaches the window bottom */
+html body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin-bottom: 0 !important;   /* the template adds space for a pinned footer; not needed */
+}
+html #main {
+    width: 100%;
+    flex: 1 0 auto;
+}
+
+/* Desktop: sidebar and page text side by side, as columns the footer can see */
+@media (min-width: 925px) {
+    html #main {
+        display: flex;
+        align-items: flex-start;
+    }
+    html #main::after {
+        display: none;
+    }
+    html .sidebar {
+        float: none;
+        flex: 0 0 var(--layout-sidebar-width);
+        margin-right: var(--layout-gap);
+        position: static;
+        top: auto;
+        bottom: auto;
+        height: auto;
+        overflow-y: visible;
+        padding-top: 0;
+    }
+    html .page,
+    html .archive {
+        float: none;
+        flex: 1 1 0;
+        min-width: 0;
+        width: auto;
+    }
+}
+
+/* Windows tall enough to fit the sidebar: it stays in view while you scroll */
+@media (min-width: 925px) and (min-height: 760px) {
+    html .sidebar {
+        position: sticky;
+        top: calc(70px + 2em);
+    }
+}
