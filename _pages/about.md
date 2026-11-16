@@ -10,10 +10,11 @@ redirect_from:
 <!-- TODO: your footer contact info now points to @ips.mpg.de / Göttingen instead of Mannheim — the line below still says "Research Associate at the University of Mannheim." Update it to your current role/institute before this goes live. -->
 I'm a research fellow in the Department of Inequality, Transformation and Conflict at the Max Planck Institute for Political and Social Science. In Jan 2026, I completed my PhD at the Swiss Graduate School for Public Administration, University of Lausanne.
 
-My research sits at the intersection of im- and emigration, citizenship, integration, the allocation of rights to noncitizen residents and nonresident citizens, and public opinion. My dissertation examines citizen attitudes of citizens in Western democracies towards immigrants' social and political contingent on demonstrating integration efforts. I use surveys, survey experiments, and observational data, and plan to incorporate computational text analysis and interviews.
+My research sits at the intersection of im- and emigration, citizenship, integration, the allocation of rights to noncitizen residents and nonresident citizens, and public opinion. My dissertation examined citizen attitudes of citizens in Western democracies towards immigrants' social and political contingent on demonstrating integration efforts. I use surveys, survey experiments, and observational data, and plan to incorporate computational text analysis and interviews.
 
 Education
 ======
+* PhD Public Administration, IDHEAP, University of Lausanne (2026)
 * MA Political Science, University of Mannheim (2015)
 * BA Political Science, Ohio State University (2013)
 * BA German Language and Culture, Ohio State University (2013)
@@ -24,8 +25,8 @@ I was the managing editor of the *American Political Science Review* (2016&ndash
 
 Outside of work
 ======
-Skiing, hiking, fitness, yoga, arts and crafts, furniture upcycling, baking, wine, and reading (classics, fantasy, sci-fi, autobiographies, nonfiction). I'm also slowly writing a fantasy novel of my own.
+I love research, but I enjoy more than just that. I also enjoy skiing, hiking, fitness, yoga, arts and crafts, furniture upcycling, baking, wine, and reading (classics, fantasy, sci-fi, autobiographies, nonfiction). I'm also slowly writing a fantasy novel of my own.
 
-This is my dog, Neville. He's 10 years old and an absolute curmudgeon &mdash; he enjoys playing with balls and playing surgeon (disassembling toy squeakers).
+This is my dog, Neville. He's 10 years old and an absolute curmudgeon &mdash; he enjoys playing with balls and playing surgeon (disassembling squeaker toys).
 
  <img src="/images/neville.jpg" alt="My dog Neville" style="width: 320px; max-width: 100%; border-radius: 6px;">
